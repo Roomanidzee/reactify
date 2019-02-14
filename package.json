@@ -2,7 +2,7 @@
   "name": "reactify",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://Roomanidzee.github.io/reactify",
+  "homepage": "http://roomanidzee.github.io/reactify",
   "dependencies": {
     "@types/jest": "24.0.4",
     "@types/node": "11.9.3",
