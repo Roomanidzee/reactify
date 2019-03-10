@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Calculator} from "./components/first_app/calculator";
-
-import './index.css';
 import * as serviceWorker from './serviceWorker';
+import UserCardComponent from "./components/second_app/card_with_users";
 
 const container = document.getElementById("root");
-ReactDOM.render(<Calculator />, container);
+ReactDOM.render(<UserCardComponent />, container);
 
 serviceWorker.unregister();
