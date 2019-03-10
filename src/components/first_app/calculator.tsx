@@ -1,5 +1,5 @@
 import React from "react";
-import TemperatureUtils from "../utils";
+import TemperatureUtils from "../../utils/first_app";
 import {TemperatureInput} from "./temperature_input";
 
 const initialBoilingState = {celsius: 0};

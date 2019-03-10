@@ -1,5 +1,5 @@
 import React from "react";
-import {SCALE_NAMES} from "../constants";
+import {SCALE_NAMES} from "../../constants";
 
 const initialState = {temperature: '', scale: '', onTemperatureChange: {}};
 type State = Readonly<typeof initialState>;
