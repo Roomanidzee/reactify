@@ -30,12 +30,14 @@ export default class UserCardComponent extends React.Component<Props, State>{
 
         this.setState((previousState: State, props: Props) => {
 
+            console.log("Я РАБОТАЮ");
+
             let {users} = previousState;
 
             let newUserID = UserCardUtils.getRandomNumber();
             let newUserNickname = `Вано #${newUserID}`;
 
-            users.concat([{id: newUserID, nickname: newUserNickname}]);
+            users.push({id: newUserID, nickname: newUserNickname});
 
             return {
                 users: users
@@ -101,7 +103,7 @@ export default class UserCardComponent extends React.Component<Props, State>{
 
                 <Card title="Пользователи" headStyle={{textAlign: "center"}}>{userItems}</Card>
 
-                <Button type="primary" onClick={this.handleAddUser} >
+                <Button type="primary" onClick={() => this.handleAddUser()} >
                     Добавить пользователя
                 </Button>
 
