@@ -4,14 +4,14 @@ import UserCardUtils from "../../utils/second_app";
 import { Button, Card } from "antd";
 import {Icon} from "antd";
 
-const initialState = {users: [{ id: 0, nickname: "Вано" }]};
+const initialState = {users: [{ id: 0, nickname: "Вано #0" }]};
 type State = Readonly<typeof initialState>;
 
 type Props = {
     users?: State["users"]
 }
 
-import '../../assets/styles/UserCardComponent.css';
+import '../../assets/styles/second_app/UserCardComponent.css';
 
 export default class UserCardComponent extends React.Component<Props, State>{
 
