@@ -1,6 +1,11 @@
+export interface Gender {
+    label: string;
+    value: string;
+}
+
 export interface FormValues {
-    firstName: string;
-    gender: string;
+    nickname: string;
+    gender: Array<Gender>;
     phoneNumber: string;
     email: string;
     textStory: string;
@@ -9,8 +14,8 @@ export interface FormValues {
 }
 
 export interface FormProps {
-    firstName?: string;
-    gender?: string;
+    nickname?: string;
+    gender?: Array<Gender>;
     phoneNumber?: string;
     email?: string;
     textStory?: string;

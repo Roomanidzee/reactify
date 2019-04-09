@@ -10,8 +10,8 @@ const MainForm = withFormik<FormProps, FormValues>({
    mapPropsToValues: props => {
 
        return {
-           firstName: '',
-           gender: '',
+           nickname: '',
+           gender: [],
            phoneNumber: '',
            email: '',
            textStory: '',
@@ -23,13 +23,21 @@ const MainForm = withFormik<FormProps, FormValues>({
 
    validationSchema: Yup.object().shape({
 
-       firstName: Yup.string()
+       nickname: Yup.string()
                      .max(30, "Предел имени в сервисе - 30 символов")
                      .required("Введите своё имя в сервисе"),
 
-       gender: Yup.string()
-                  .oneOf(["male", "female"])
-                  .required("Выберите свою половую принадлежность"),
+       gender: Yup.array()
+                  .max(1, "У человека только один гендер!")
+                  .of(
+                     Yup.object().shape({
+                         label: Yup.string()
+                                   .required(),
+
+                         value: Yup.string()
+                                   .required()
+                     })
+                  ),
 
        phoneNumber: Yup.string()
                        .matches(phoneRegexp, "Неправильно введён номер телефона"),

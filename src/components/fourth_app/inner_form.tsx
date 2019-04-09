@@ -2,34 +2,58 @@ import React from "react";
 
 import {Form, Field, InjectedFormikProps} from 'formik';
 import {FormProps, FormValues} from "./props_and_values";
+import CustomSelect from "./custom_select";
 
 const InnerForm: React.FunctionComponent<InjectedFormikProps<FormProps, FormValues>> = (props) =>{
 
-    const { touched, errors, isSubmitting, message } = props;
+    const {
+        values,
+        touched,
+        errors,
+        setFieldValue,
+        setFieldTouched,
+        isSubmitting,
+        message
+    } = props;
+
     return (
         <Form>
             <h1>{message}</h1>
 
-            <Field type="input" name="firstName" />
-            {touched.firstName && errors.firstName && <div>{errors.firstName}</div>}
+            <Field type="input" name="nickname" placeholder="Никнейм"/>
+            {touched.nickname && errors.nickname && <div>{errors.nickname}</div>}
 
-            <Field type="select" name="gender"/>
-               {/* <option value="male">Мужской пол</option>
-                //<option value="female">Женский пол</option>
-            </Field>*/}
-            {touched.gender && errors.gender && <div>{errors.gender}</div>}
+            <br/>
 
-            <Field type="phone" name="phoneNumber"/>
+            <CustomSelect
+
+                value={values.gender}
+                onChange={setFieldValue}
+                onBlur={setFieldTouched}
+
+            />
+
+            <br/>
+
+            <Field type="phone" name="phoneNumber" placeholder="Номер телефона"/>
             {touched.phoneNumber && errors.phoneNumber && <div>{errors.phoneNumber}</div>}
 
-            <Field type="email" name="email" placeholder/>
+            <br/>
+
+            <Field type="email" name="email" placeholder = "Электронная почта"/>
             {touched.email && errors.email && <div>{errors.email}</div>}
 
-            <Field type="textarea" name="textStory"/>
+            <br/>
+
+            <Field type="textarea" name="textStory" placeholder="Немного о себе"/>
             {touched.textStory && errors.textStory && <div>{errors.textStory}</div>}
 
-            <Field type="textarea" name="filmsAndSeries"/>
+            <br/>
+
+            <Field type="textarea" name="filmsAndSeries" placeholder="Ваши фильмы и сериалы"/>
             {touched.filmsAndSeries && errors.filmsAndSeries && <div>{errors.filmsAndSeries}</div>}
+
+            <br/>
 
             <button type="submit" disabled={isSubmitting}>
                 Отправить
