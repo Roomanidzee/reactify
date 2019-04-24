@@ -6,7 +6,7 @@ import _ from "lodash";
 
 import '../../assets/styles/third_app/TaskListComponent.css';
 import {connect} from "react-redux";
-import {ADD_TASK} from "./redux/action_types";
+import {ADD_TASK, COMPLETE_TASK} from "./redux/action_types";
 
 const initialState = {
   input: "",
@@ -60,10 +60,13 @@ class TaskListComponent extends React.Component<Props, State>{
             }
 
         });
+        //this.props.addTask(task); - добавить потом в пропсы
 
     };
 
     handleStatusChange = (taskId: number, complete: boolean) => {
+
+        //const {completeTask} = this.props;
 
         let tasks = _.cloneDeep(this.state.tasks);
 
@@ -84,6 +87,8 @@ class TaskListComponent extends React.Component<Props, State>{
             }
 
         });
+
+        //completeTask(task);
 
     };
 
@@ -157,6 +162,12 @@ const mapDispatchToProps = (dispatch : any, ownProps: any) => ({
            type: ADD_TASK,
            task: task
        });
+   },
+   completeTask: (task: any) => {
+       dispatch({
+           type: COMPLETE_TASK,
+           task: task
+       })
    }
 });
 export default connect(mapStateToProps, mapDispatchToProps)(TaskListComponent);
