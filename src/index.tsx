@@ -2,9 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import * as serviceWorker from './serviceWorker';
-import FormExampleComponent from "./components/fourth_app/main_page";
+import TaskListComponent from "./components/third_app/task_list";
+
+import {Provider} from "react-redux";
+import store from "./components/third_app/redux/store";
 
 const container = document.getElementById("root");
-ReactDOM.render(<FormExampleComponent />, container);
+ReactDOM.render(
+    <Provider store={store}>
+       <TaskListComponent />
+    </Provider>,
+    container);
 
 serviceWorker.unregister();
