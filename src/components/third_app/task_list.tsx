@@ -1,10 +1,12 @@
 import React from "react";
 
-import { Card, Button, Input, Empty } from "antd";
+import { Card, Button, Input} from "antd";
 import TaskComponent from "./task";
 import _ from "lodash";
 
 import '../../assets/styles/third_app/TaskListComponent.css';
+import {connect} from "react-redux";
+import {ADD_TASK} from "./redux/action_types";
 
 const initialState = {
   input: "",
@@ -18,7 +20,7 @@ type Props = {
     tasks?: State["tasks"]
 }
 
-export default class TaskListComponent extends React.Component<Props, State>{
+class TaskListComponent extends React.Component<Props, State>{
 
     inputRef: React.RefObject<HTMLInputElement> = React.createRef();
     readonly state: State = initialState;
@@ -142,3 +144,19 @@ export default class TaskListComponent extends React.Component<Props, State>{
     }
 
 }
+
+const mapStateToProps = (store: any) => {
+    return {
+        tasks: store.taskReducer.tasks
+    }
+};
+
+const mapDispatchToProps = (dispatch : any, ownProps: any) => ({
+   addTask: (task: any) => {
+       dispatch({
+           type: ADD_TASK,
+           task: task
+       });
+   }
+});
+export default connect(mapStateToProps, mapDispatchToProps)(TaskListComponent);
